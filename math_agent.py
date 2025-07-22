@@ -7,7 +7,11 @@ import numpy as np
 import requests
 import re
 
-load_dotenv()
+if os.path.exists(".env"):
+    load_dotenv()
+else:
+    pass
+
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 SERPER_API_KEY = os.getenv("SERPER_API_KEY")
 
