@@ -1,0 +1,95 @@
+
+# Project Task i got given as an "assignment" 
+
+I have alredy created a simple yet effective agent in "D:\MY CODE\Projects\math\agent_math" but need to improve it to match defined functionalities in the "assignment" so i need to improve it with the help of you.
+
+
+## the "assignment" is:
+
+Human in a loop: Feedback based learning - Math Routing Agent 
+
+Your goal is to design an Agentic-RAG architecture system that replicates a mathematical 
+professor. When presented with a mathematical question, the system should understand and 
+generate a step-by-step solution, simplifying it for the student. The response must first check the 
+existing knowledge base for relevant information. If the solution is not found in the knowledge 
+base, the system should perform a web search and then generate the step-by-step solution. 
+
+The Math-agent must have a solid routing pipeline: 
+● AI Gateway mainly guardrails  
+○ Integrate the routing agent with AI gateway by adding the Input and Output 
+guardrails. Do proper research on how the guardrails is incorporated.  
+○ The app should be focused on only delivering education based content mainly: 
+Mathematics.
+
+● Knowledge Base Creation 
+○ To build an Agentic RAG, the system must adapt to a knowledge base to retrieve 
+relevant questions effectively.  
+○ You can choose any dataset or math module as the knowledge base and store it 
+in a VectorDB.  
+○ If the user’s question exists in the knowledge base, the system should retrieve it 
+and generate a step-by-step solution to provide simplified results. 
+● Web Search or Using MCP  
+○ If the user’s question is not found in the knowledge base, the system should 
+perform a web search to fetch the result and generate a response.  
+○ However, if the question is not available online, the system must ensure it does 
+not provide incorrect results.  
+○ Furthermore, for this step, you need to have a pipeline for Web Search 
+extraction.  
+○ Usage of Model Context Protocol (MCP) is MUST.  
+● Human-in-the loop mechanism 
+○ Incorporate an evaluation or feedback agent layer to enhance the agent's 
+performance through self-learning capabilities.  
+○ Note: You need to take human feedback and refine the response accordingly.  
+○ The final response is subjective and requires a Human-in-the-Loop mechanism for 
+
+
+
+Assignment Evaluation Criteria: 
+● Your agent will be evaluated based on the following parameters: 
+○ If the system is able to route efficiently between knowledge base and search.  
+○ Functionality of guardrails and feedback mechanism capabilities.  
+○ Feasibility and practicality of implementing the proposed solutions. 
+○ Quality and clarity of the final proposal, including actionable insights. 
+
+
+Suggested Tools & Frameworks 
+● Agent Frameworks: use simple yet effective
+● Search & Retrieval: 
+○ Leverage Serper for advanced web search 
+○ Check Awesome MCP server for the relevant MCP server for Search.  
+
+
+
+## what i have to complete the project:
+
+- GROQ_API_KEY
+- SERPER_API_KEY
+
+i also have an extra API key: GEMINI_API_KEY
+
+
+## what i have to do (as of my knowledge, i may be wrong, so please correct me if i am, do what is right for the project):
+
+- create a simple yet effective agent framework
+- create a guardrails
+- create a routing pipeline
+- create a knowledge base Functionality
+- create a search & retrieval Functionality pipeline 
+- create a feedback mechanism(like after checking the answer in knowledge base, if not found it should ask user’s permission "can i search it from web sources" and with human response it should route to web_search Functionality)(in UI, with agent response there will be small "thums up" & "thumbs down" icons in the bottom of the generation to take user stisfaction with agent_answer, to improve future agent answers) - human in the loop mechanism
+
+## Guidelines:
+
+- I have alredy created a simple yet effective agent in "D:\MY CODE\Projects\math\agent_math" but need to improve it to match defined functionalities in the assignment so i need to improve it with the help of you.
+- use the GROQ_API_KEY for the agent framework
+- use /knowledge\maths_kb2.json for knowledge base 
+- use the SERPER_API_KEY for the search & retrieval Functionality pipeline 
+
+
+# BUILD ON TOP/FROM "D:\MY CODE\Projects\math\agent_math" as the work is majority done but just need improvements. 
+# use knowledge base existing ones knowledge from D:\MY CODE\Projects\math\agent_math\knowledge\
+# use API keys from ".env"
+# update & adapt UI & UX & routing in html, css, js, app.py, etc. (if possible update the ui to dark theme)
+# plese don't overcomplicate my existing project instead improve it to reach the assignment's specifications that's all. 
+
+
+"just, make it work... that's all.."  

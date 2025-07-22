@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math-Agent</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="dark-mode">
+    <div class="chat-container">
+        <header class="chat-header">
+            <span class="header-icon left" id="about-icon" title="Enter any maths query to know simple solving approaches or responses" aria-label="About the app">&#x2753;</span>
+            <div class="header-center">
+                <h1>Math Professor</h1>
+                <p class="subheading">An Agentic Mathematics AI Powered by LLM, RAG & WEB</p>
+            </div>
+            <span class="header-icon right" id="contact-icon" title="Developed by Pranay Akhil Jeedimalla" aria-label="Developer contact">&#x1F464;</span>
+        </header>
+        <div class="chat-messages" id="chat-messages">
+        </div>
+        <form class="chat-input-form" id="chat-form">
+            <input type="text" id="user-input" placeholder="Type your math question here..." autocomplete="off" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <div id="permission-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <p id="permission-message">I couldn't find this in my knowledge base. Would you like me to search the web for an answer?</p>
+            <button id="allow-web-search">Yes, search web</button>
+            <button id="deny-web-search">No, thanks</button>
+        </div>
+    </div>
+    <div id="about-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>About the App</h2>
+            <p>This is an agentic mathematics assistant. Enter any maths query to get step-by-step solutions, explanations, or concepts.<br><br>
+            <br>
+             <b>LLM:</b> llama-3.3-70b-versatile<br>
+             <b>RAG:</b> MathQA dataset from Hugging Face<br>
+             <b>Web Search:</b> Serper web search API<br>
+             <b>Tech Stack:</b> FastAPI, HTML, CSS, JS<br><br>
+            The agent uses a knowledge base and web search to provide the best possible answer, and you can give feedback on every answer to help improve the system.</p>
+            <button onclick="document.getElementById('about-modal').style.display='none'">Close</button>
+        </div>
+    </div>
+    <div id="contact-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h4>Developer Contact</h4>
+            <h2 style="color: #68a4ffff;"><b> Pranay Akhil Jeedimalla </b></h2>
+            <p>GitHub: <a href="https://github.com/akhilbrucelee066" target="_blank">@akhilbrucelee066</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/pranay-akhil-jeedimalla/" target="_blank">@pranay-akhil-jeedimalla</a></p>
+            <p>Email: <a href="mailto:jpranayakhil066@gmail.com">jpranayakhil066@gmail.com</a></p>
+            <button onclick="document.getElementById('contact-modal').style.display='none'">Close</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
