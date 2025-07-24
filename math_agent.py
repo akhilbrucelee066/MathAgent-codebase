@@ -15,8 +15,7 @@ else:
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 SERPER_API_KEY = os.getenv("SERPER_API_KEY")
 
-with open('knowledge/maths_kb3.json', 'r') as f:
-    MATH_KB = json.load(f)
+FIREBASE_KB_URL = "https://math-agent-4e6a9-default-rtdb.asia-southeast1.firebasedatabase.app/math_kb.json"
 
 with open(os.path.join(os.path.dirname(__file__), 'sys_prompt.txt'), 'r', encoding='utf-8') as f:
     system_prompt = f.read()
@@ -64,7 +63,13 @@ def perform_web_search(query):
 class rag:
     def __init__(self):
         self.model = SentenceTransformer('all-MiniLM-L6-v2')
-        self.problems = [item['Problem'] for item in MATH_KB]
+        response = requests.get(FIREBASE_KB_URL)
+        if response.status_code == 200:
+            self.MATH_KB = response.json()
+        else:
+            raise Exception(f"Failed to load knowledge base: {response.status_code}")
+        
+        self.problems = [item['Problem'] for item in self.MATH_KB]
         if os.path.exists('knowledge/math_kb_embeddings.npy'):
             self.embeddings = np.load('knowledge/math_kb_embeddings.npy')
         else:
@@ -76,7 +81,7 @@ class rag:
         similarities = cosine_similarity(query_embedding, self.embeddings)[0]
         most_similar = np.argmax(similarities)
         if similarities[most_similar] > threshold:
-            return MATH_KB[most_similar]
+            return self.MATH_KB[most_similar]
         return None
 
 # maths professor
@@ -84,9 +89,35 @@ class math_agent:
     def __init__(self):
         self.history = [{"role": "system", "content": system_prompt}]
         self.rag = rag()
+        self.last_query = None
+
+    def check_feedback(self):
+        """Check if last response had negative feedback"""
+        feedback_file = 'knowledge/feedback.json'
+        if not os.path.exists(feedback_file):
+            return False
+        if not self.last_query:
+            return False
+        try:
+            with open(feedback_file, 'r') as f:
+                feedback_data = json.load(f)
+                entries = feedback_data if isinstance(feedback_data, list) else [feedback_data]
+                for entry in reversed(entries):
+                    if (entry.get('question') == self.last_query and 
+                        entry.get('feedback') == 'down'):
+                        return True
+        except (json.JSONDecodeError, KeyError):
+            return False
+        return False
 
     def ask_agent(self, query):
+        # acknowledging the user feedback for previous response in history 
+        if self.check_feedback():
+            fb_ack = "\n[User was dissatisfied with a previous response]"
+            if self.history and self.history[-1]['role'] == 'assistant':
+                self.history[-1]['content'] += fb_ack
         try:
+            self.last_query = query
             # query validating
             if not is_math_question(query):
                 return "Sorry, I can only answer mathematics-related questions. Please ask a math question!! Articulate Query correctly!!"
