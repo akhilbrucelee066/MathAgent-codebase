@@ -1,4 +1,4 @@
-import os
+# import os
 from pathlib import Path
 from fastapi import FastAPI, Request, Form
 from fastapi.staticfiles import StaticFiles
@@ -23,7 +23,7 @@ def save_feedback(feedback):
         with open(FEEDBACK_FILE, 'r') as f:
             data = json.load(f)
     else:
-        data = []
+        data = [{"question": "blank", "answer": "blank", "feedback": "up"}]
     data.append(feedback)
     with open(FEEDBACK_FILE, 'w') as f:
         json.dump(data, f, indent=2)
@@ -60,3 +60,9 @@ async def feedback_endpoint(question: str = Form(...), answer: str = Form(...), 
 
 if __name__ == "__main__":
     uvicorn.run(app, port=8000)
+    
+# if __name__ == "__main__":
+#     BASE_DIR = Path(__file__).parent
+# else:
+#     # For Vercel deployment
+#     BASE_DIR = Path(os.getcwd())
