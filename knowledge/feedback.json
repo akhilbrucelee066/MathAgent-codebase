@@ -3,10 +3,5 @@
     "question": "hi",
     "answer": "Sorry, I can only answer mathematics-related questions. Please ask a math question!",
     "feedback": "up"
-  },
-  {
-    "question": "\"Problem\": \"a shopkeeper sold an article offering a discount of 5 % and earned a profit of 31.1 % . what would have been the percentage of profit earned if no discount had been offered ?\",",
-    "answer": "Let's break down the problem step by step. We want to find out what would have been the percentage of profit earned if no discount had been offered, given that the shopkeeper sold an article offering a discount of 5% and earned a profit of 31.1%.\n\nStep 1: Let's assume the cost price (CP) of the article is 100 units. We know that the shopkeeper earned a profit of 31.1%, so the selling price (SP) after the discount can be calculated as:\n\nSP = CP + (CP * 31.1/100)\n= 100 + (100 * 31.1/100)\n= 100 + 31.1\n= 131.1\n\nHowever, this is the selling price after the discount. Let's call the marked price (or the price before the discount) as MP.\n\nStep 2: We know that the discount is 5%, so the selling price (SP) is 95% of the marked price (MP). We can set up an equation:\n\nSP = MP - (MP * 5/100)\n131.1 = MP - (MP * 0.05)\n131.1 = MP * 0.95\n\nStep 3: Now, we can solve for MP:\n\nMP = 131.1 / 0.95\n= 138\n\nSo, the marked price (or the price before the discount) is 138 units.\n\nStep 4: Now that we have the marked price (MP) and the cost price (CP), we can calculate the percentage of profit earned if no discount had been offered:\n\nPercentage of profit = ((MP - CP) / CP) * 100\n= ((138 - 100) / 100) * 100\n= (38 / 100) * 100\n= 38%\n\nTherefore, the percentage of profit earned if no discount had been offered is 38%.\n\n-RAG Knowledge\n(Source: Knowledge Base)",
-    "feedback": "up"
   }
 ]
