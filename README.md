@@ -28,6 +28,11 @@ Math Agent leverages a hybrid approach:
 6. The LLM orchestrates the final response, combining retrieved and generated information.
 7. Users can provide feedback to help improve future responses.
 
+## Usage
+
+- pip install -r requirements.txt
+- python app.py
+
 For a detailed system design, diagrams, and documentation, see the landing page:
 
 https://akhilbrucelee066.github.io/Math_Agent
