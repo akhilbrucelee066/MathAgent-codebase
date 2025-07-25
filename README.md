@@ -8,7 +8,7 @@ Math Agent is an agentic mathematics AI assistant designed to provide step-by-st
 
 Math Agent leverages a hybrid approach:
 
-- **LLM**: Uses models such as Gemini, GPT, or Llama-3 (configurable) for natural language understanding and reasoning.
+- **LLM**: Uses Groq & models such as Gemini, GPT, or Llama-3 (configurable) for natural language understanding and reasoning.
 - **RAG**: Integrates a knowledge base (MathQA dataset from Hugging Face) to retrieve relevant problems and solutions.
 - **Web Search**: Utilizes the Serper API to fetch up-to-date information when the knowledge base is insufficient.
 - **Feedback Loop**: Allows users to provide feedback to improve answer quality over time.
@@ -21,10 +21,12 @@ Math Agent leverages a hybrid approach:
 ## Approach
 
 1. User submits a math query via the web interface.
-2. The agent first attempts to answer using the knowledge base (RAG).
-3. If needed, it performs a web search for additional context.
-4. The LLM orchestrates the final response, combining retrieved and generated information.
-5. Users can provide feedback to help improve future responses.
+2. The agent first validates input as maths query or not. 
+3. then, agent tries to attempt the answer using the LLM (LLM).
+4. If not LLM then agent attempts to answer using the knowledge base (RAG).
+5. If needed, it performs a web search for additional context (WEB).
+6. The LLM orchestrates the final response, combining retrieved and generated information.
+7. Users can provide feedback to help improve future responses.
 
 For a detailed system design, diagrams, and documentation, see the landing page:
 
